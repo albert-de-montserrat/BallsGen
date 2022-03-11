@@ -38,7 +38,7 @@ function wall_collision(new_coord, r, lx, ly, lz; buffer = 0.2)
     return false
 end
 
-function generate_inclusions(lx, ly, lz, ϕ, r)
+function generate_inclusions(lx, ly, lz, ϕ, r;  buffer_ball = 0.2, buffer_wall = 0.2)
     # first sphere coordinate
     coords = [new_center(lx, ly, lz)]
 
@@ -50,8 +50,8 @@ function generate_inclusions(lx, ly, lz, ϕ, r)
         iter += 1
         # temptative coordinate
         new_coord = new_center(lx, ly, lz) 
-        collision1 = sphere_collision(coords, new_coord, r)
-        collision2 = wall_collision(new_coord, r, lx, ly, lz)
+        collision1 = sphere_collision(coords, new_coord, r; buffer=buffer_ball)
+        collision2 = wall_collision(new_coord, r, lx, ly, lz; buffer=buffer_wall)
         if !collision1 && !collision2
             push!(coords, new_coord)
             tot_vol += vol(r)
