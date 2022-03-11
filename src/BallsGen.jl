@@ -12,9 +12,9 @@ new_center(lx, ly, lz) = (rand()*lx, rand()*ly, rand()*lz)
 distance(p1, p2) = sqrt((p1[1]-p2[1])^2 + (p1[2]-p2[2])^2 + (p1[3]-p2[3])^2)
 
 # check if the new inclusion collides with any pre-existent inclusion
-function sphere_collision(coords, new_coord, r)
+function sphere_collision(coords, new_coord, r; buffer = 0.2)
     for c in coords
-        if distance(c, new_coord) ≤ 2*r*1.2
+        if distance(c, new_coord) ≤ 2*r*(1 + buffer)
             return true
         end
     end
@@ -22,16 +22,16 @@ function sphere_collision(coords, new_coord, r)
     return false
 end
 
-function wall_collision(new_coord, r, lx, ly, lz)
+function wall_collision(new_coord, r, lx, ly, lz; buffer = 0.2)
     x, y, z = new_coord
-
-    if (x ≤ r*1.2) || (x ≥ (lx - r*1.2))
+    buffer += 1
+    if (x ≤ r*buffer) || (x ≥ (lx - r*buffer))
         return true
 
-    elseif (y ≤ r*1.2) || (y ≥ (ly - r*1.2))
+    elseif (y ≤ r*buffer) || (y ≥ (ly - r*buffer))
         return true
     
-    elseif (z ≤ r*1.2) || (z ≥ (lz - r*1.2))
+    elseif (z ≤ r*buffer) || (z ≥ (lz - r*buffer))
         return true
     end
 
