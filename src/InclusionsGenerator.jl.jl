@@ -1,4 +1,4 @@
-module BallsGen
+module InclusionsGenerator
 
 export generate_inclusions
 
