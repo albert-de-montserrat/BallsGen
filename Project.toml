@@ -1,4 +1,4 @@
-name = "BallsGen"
+name = "InclusionsGenerator"
 uuid = "3a48996f-2dab-43a9-8cc4-fce6245fdd6e"
 authors = ["albert-de-montserrat <albert.de.montserrat@gmail.com>"]
 version = "0.1.0"
