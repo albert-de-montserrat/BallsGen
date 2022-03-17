@@ -1,4 +1,4 @@
-# BallsGen.jl
+# InclusionsGenerator.jl
 Random sphere generator
 
 ```julia
